@@ -31,7 +31,7 @@ class Brown
 class Black
 class White
 
-Mastermind *--> "2" Turn
+Mastermind *--> Turn
 Mastermind *--> "2" Player
 Mastermind *--> Board
 
@@ -61,11 +61,16 @@ Colour <|-- Brown
 Colour <|-- Black
 Colour <|-- White
 
+Token --> Position
+
 
 Result *--> "0.. 5" Match 
 
 Match <|-- WhiteMatch
 Match <|-- BlackMatch
+
+WhiteMatch ..> Colour
+BlackMatch ..> Token
 
 Player <|-- Codemaker
 Player <|-- Codebreaker
