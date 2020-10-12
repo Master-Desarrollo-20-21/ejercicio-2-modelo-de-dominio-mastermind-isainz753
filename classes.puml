@@ -1,0 +1,77 @@
+@startuml
+
+title Mastermind - Diagrama de clases
+
+class Mastermind
+class Turn
+class Player
+
+class Board
+class Row
+class Position
+
+class Goal
+class AllBlacks
+
+class Action
+class Put
+class Result
+class Match
+class WhiteMatch
+class BlackMatch
+
+class Token
+class Colour
+class Red
+class Blue
+class Green
+class Yellow
+class Pink
+class Brown
+class Black
+class White
+
+Mastermind *--> "2" Turn
+Mastermind *--> "2" Player
+Mastermind *--> Board
+
+Board *--> "12" Row
+Row *--> "5" Position
+
+Action <|-- Put
+Action <|-- Result
+Action ..> Row : position
+Action ..> Token
+
+Goal <|-- AllBlacks
+Goal ..> Put
+Goal ..> Result
+
+Player o-down-> Goal
+Player --> "0..192" Token
+Player --> Board
+
+Token *--> "1" Colour
+Colour <|-- Red
+Colour <|-- Blue
+Colour <|-- Green
+Colour <|-- Yellow
+Colour <|-- Pink
+Colour <|-- Brown
+Colour <|-- Black
+Colour <|-- White
+
+
+Result *--> "0.. 5" Match 
+
+Match <|-- WhiteMatch
+Match <|-- BlackMatch
+
+Player <|-- Codemaker
+Player <|-- Codebreaker
+
+Turn o-->  Codemaker
+Turn o-->  Codebreaker
+
+
+@enduml
